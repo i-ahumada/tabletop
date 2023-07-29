@@ -3,18 +3,27 @@ import { Users } from "./components/Users"
 import { Tools } from "./components/Tools"
 import { Navbar } from "./components/Navbar"
 import { Table } from "./components/Table"
+import { createContext, useState } from "react"
 
-function App() {
+export const ToolContext = createContext({
+  tool : null,
+  setTool: () => {}
+});
+
+export const App = () => {
+  const [tool, setTool] = useState(false);
+  const value = { tool, setTool };
+
   return (
     <BrowserRouter>
       <div className="absolute flex flex-col gap-5 mt-5 ml-5">
         <Navbar />
         <Users />
       </div>
-      <Tools />
-      <Table />
+      <ToolContext.Provider value={value}>
+        <Tools/>
+        <Table />
+      </ToolContext.Provider>
     </BrowserRouter>
   )
 }
-
-export default App
