@@ -8,11 +8,10 @@ export const Table = () => {
      * @param {CanvasRenderingContext2D} ctx 
      * @param {HTMLCanvasElement} canvas 
      */
-    const write = (ctx, canvas, tool ) => {
+    const write = (ctx, canvas ) => {
         const rect = canvas.getBoundingClientRect();
         const xScale = canvas.width / rect.width;
         const yScale = canvas.height / rect.height;
-        ctx.fillStyle = tool.color;
         ctx.lineWidth = 1;
         let isPainting = false;
         canvas.onmousedown = (e) => { 
@@ -22,12 +21,14 @@ export const Table = () => {
         canvas.onmouseup = () => { 
             isPainting = false;
             ctx.stroke()
+            ctx.strokeStyle = tool.color
             ctx.beginPath();
         };
         canvas.onmousemove = (e) => {
             if (isPainting) {
                 ctx.lineWidth = 1;
-                ctx.lineCap = 'round'
+                ctx.lineCap = 'round';
+                ctx.fillStyle = "#00FF00";
                 ctx.lineTo(e.pageX * xScale, e.pageY * yScale);
                 ctx.stroke()
             }
@@ -49,7 +50,7 @@ export const Table = () => {
         canvas.onmousemove = () => {};
         switch(tool.name) {
             case 'write':
-                write(ctx, canvas, tool);
+                write(ctx, canvas );
                 break;
             case 'move':
                 // move(ctx);
