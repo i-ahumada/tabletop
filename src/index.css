@@ -17,12 +17,18 @@
 }
 
 /* p-2 text-[20px] flex items-center hover:text-[#2266AA] cursor-pointer */
+.icon-link-active,
 .icon-link {
   padding: 0.5rem;
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
 }
 
+.icon-link {
+    color: #EFEFEF;
+}
+
+.icon-link-active,
 .icon-link:hover {
   color: #2266AA;
 }
