@@ -8,7 +8,7 @@ export const Table = () => {
      * @param {CanvasRenderingContext2D} ctx 
      * @param {HTMLCanvasElement} canvas 
      */
-    const write = (ctx, canvas ) => {
+    const write = (ctx, canvas, tool ) => {
         const rect = canvas.getBoundingClientRect();
         const xScale = canvas.width / rect.width;
         const yScale = canvas.height / rect.height;
@@ -50,7 +50,7 @@ export const Table = () => {
         canvas.onmousemove = () => {};
         switch(tool.name) {
             case 'write':
-                write(ctx, canvas );
+                write(ctx, canvas, tool );
                 break;
             case 'move':
                 // move(ctx);
