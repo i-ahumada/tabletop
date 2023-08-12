@@ -5,9 +5,14 @@ export const Tools = () => {
     const [toggle, setToggle] = useState(false);
     const { tool, setTool } = useContext(ToolContext);
 
+    /**
+     * 
+     * @param {React.MouseEvent<HTMLElement, MouseEvent>} e 
+     * @returns 
+     */
     const handleSetTool = (e) => {
         const toolName = e.target.getAttribute("value") || e.currentTarget.getAttribute("value");
-        return setTool(prevstate => ({...prevstate, name: toolName}));
+        return setTool(prevstate => ({...prevstate, name: toolName, type: prevstate.type || "pencil"}));
     }
     return(
         <div className="absolute right-0 px-5 py-2 bg-primary rounded-[5px] mt-5 mr-5 shadow-center">
