@@ -2,7 +2,7 @@ import { users } from "../constants/index.js";
 
 export const Users = () => {
     return( 
-        <div className="w-[200px] px-5 py-2 bg-[#272727]/[0.6] rounded-[10px] box shadow-center">
+        <div className="w-[200px] px-5 py-2 bg-primary rounded-[10px] box shadow-center">
             <ul className="no-list text-dark">
                 {
                     users.map((user) => (

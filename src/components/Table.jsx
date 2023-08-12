@@ -1,46 +1,17 @@
 import { useContext, useEffect } from "react"
-import { ToolContext } from "../App"
+import { ToolContext } from "../scenes/room"
+import { write } from "../functions/tools";
 
 export const Table = () => {
     const { tool } = useContext(ToolContext);
-    /**
-     * @param {Object} tool
-     * @param {CanvasRenderingContext2D} ctx 
-     * @param {HTMLCanvasElement} canvas 
-     */
-    const write = (ctx, canvas, tool ) => {
-        const rect = canvas.getBoundingClientRect();
-        const xScale = canvas.width / rect.width;
-        const yScale = canvas.height / rect.height;
-        ctx.lineWidth = 1;
-        let isPainting = false;
-        canvas.onmousedown = (e) => { 
-            isPainting = true;
-            ctx.moveTo(e.pageX * xScale, e.pageY * yScale);
-        }; 
-        canvas.onmouseup = () => { 
-            isPainting = false;
-            ctx.stroke()
-            ctx.strokeStyle = tool.color
-            ctx.beginPath();
-        };
-        canvas.onmousemove = (e) => {
-            if (isPainting) {
-                ctx.lineWidth = 1;
-                ctx.lineCap = 'round';
-                ctx.fillStyle = "#00FF00";
-                ctx.lineTo(e.pageX * xScale, e.pageY * yScale);
-                ctx.stroke()
-            }
-        };
-    }
+
     useEffect(() => {
         const canvas = document.getElementById('table');
         canvas.style.width = "100%";
         canvas.style.height = "100%";
         canvas.width = screen.width;
         canvas.height = screen.height;
-    }, [])
+    }, []);
 
     useEffect(() => {
         const canvas = document.getElementById('table');
@@ -66,7 +37,7 @@ export const Table = () => {
 
 
     return(
-        <canvas id="table" className="offset-hidden bg-[#666666]">
+        <canvas id="table" className="offset-hidden bg-secondary">
 
         </canvas>
     )

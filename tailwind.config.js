@@ -5,7 +5,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#cccccc",
+        primary: "#59433E",
+        secondary: "#8C7B6C",
+        ternary: "#F2DABD",
         dark: "#EFEFEF"
       },
       boxShadow: {
